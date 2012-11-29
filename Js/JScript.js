@@ -22,7 +22,7 @@ $('#startPage').live('pageshow', function() {
 
             // alert(element.category);
             if (element.category != meat) {
-                $('#categorieslist').append('<li><img src="' + element.src + '" alt="Australia"/><span style="font-size:Medium; font-family:Verdana; color:Black;">' + element.category + '</span></li>');
+                $('#categorieslist').append('<li><span style="font-size:Medium; font-family:Verdana; color:Black;">' + element.category + '</span></li>');
                 meat = element.category;
             }
         });
@@ -43,7 +43,7 @@ $('#categorieslist li').live('vclick', function() {
 
         $.each(data, function(index, element) {
 
-        if (element.category == scategory) {
+            if (element.category == scategory) {
 
                 $('#subcategorieslist').append('<li><span style="font-size:Medium; font-family:Verdana; color:Black;">' + element.type + '</span></li>');
 
@@ -122,6 +122,13 @@ $('#subcategorieslist li').live('vclick', function() {
 });
 
 $('#categorydetaillist li').live('vclick', function() {
+    document.getElementById('d2').value = '';
+    milisec = 0;
+    seconds = 0;
+    minutes = 0;
+    splitsubcategory1 = "";
+    splitsubcategory2 = "";
+    splitsubcategory3 = "";
     //alert("Works"); // id of clicked li by directly accessing DOMElement property
     selectedcategory = $(this).text();
     //alert(selectedcategory);
@@ -138,7 +145,7 @@ $('#categorydetaillist li').live('vclick', function() {
         display();
     }
     else if (splitsubcategory2[1] == "Temp(F)") {
-        // alert("enter");        
+        // alert("enter");
         seconds = 100;
         display();
     }
@@ -152,7 +159,6 @@ $('#categorydetaillist li').live('vclick', function() {
 
 
 function display() {
-
     if (splitsubcategory3[0] == null || splitsubcategory3[0] == "") {
         //alert("null");
         if (seconds > 60) {
@@ -160,8 +166,8 @@ function display() {
             //alert(minutes);
 
             minutes = [(minutessplit > 0) ? Math.floor(minutessplit) : Math.ceil(minutessplit)];
-    
-//            minutessplit = minutes.split('.');
+
+            //            minutessplit = minutes.split('.');
             //alert(minutes);
             seconds = (minutes * 60) - seconds;
         }
@@ -174,12 +180,15 @@ function display() {
         if (splitsubcategory3[0] > 60) {
             minutes = splitsubcategory3[0] / 60;
         }
+        else {
+            seconds = splitsubcategory3[0];
+        }
     }
     gettime();
 }
 function gettime() {
-   // minutes = 0;
-   
+    // minutes = 0;
+
     // alert(seconds);
     if (milisec <= 0) {
         milisec = 9;
@@ -189,12 +198,12 @@ function gettime() {
         seconds = 60;
         milisec = 0;
         minutes -= 1;
-        
+
     }
     if (minutes <= -1) {
         seconds = 0;
         minutes += 1;
-       // seconds += 1
+        // seconds += 1
     }
     else
 
