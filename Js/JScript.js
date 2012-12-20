@@ -12,7 +12,7 @@ var minutes = 0;
 var minutessplit = "";
 $('#startPage').live('pageshow', function() {
 
-    jQuery.getJSON("Js/grilldata.js", function(data) {
+jQuery.getJSON("Js/cooktimes.json", function(data) {
 
         $('#categorieslist li').remove();
 
@@ -35,7 +35,7 @@ $('#categorieslist li').live('vclick', function() {
     scategory = $(this).text();
 
     $.mobile.changePage("#sublistpage", { transition: "slideup" });
-    jQuery.getJSON("Js/grilldata.js", function(data) {
+    jQuery.getJSON("Js/cooktimes.json", function(data) {
 
         $('#subcategorieslist li').remove();
 
@@ -58,7 +58,7 @@ $('#subcategorieslist li').live('vclick', function() {
     selectedcategory = $(this).text();
 
     $.mobile.changePage("#categorydetailpage", { transition: "slideup" });
-    jQuery.getJSON("Js/grilldata.js", function(data) {
+    jQuery.getJSON("Js/cooktimes.json", function(data) {
 
         $('#subcategorieslist li').remove();
 
