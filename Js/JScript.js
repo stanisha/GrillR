@@ -218,7 +218,7 @@ function gettime() {
     }
 }
 function playsound() {
-    //alert("play");
+    alert("play");
     var snd = new Audio("chime.wav"); // buffers automatically when created
     snd.play();
 
